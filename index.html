@@ -346,16 +346,97 @@
     /* STORY */
     .story { background: var(--areia); }
 
-    .story-solo { max-width: 620px; }
+    .story-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
 
-    .story-solo p {
+    .story-text p {
       color: var(--medio);
       font-weight: 300;
       margin-bottom: 1.2rem;
       font-size: 0.97rem;
     }
 
-    .story-solo p strong { color: var(--terra); font-weight: 500; }
+    .story-text p strong { color: var(--terra); font-weight: 500; }
+
+    .story-roots {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding-top: 0.5rem;
+    }
+
+    .root-item {
+      display: flex;
+      gap: 1.2rem;
+      align-items: stretch;
+      position: relative;
+    }
+
+    .root-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      width: 12px;
+    }
+
+    .root-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--barro);
+      border: 2px solid var(--areia);
+      box-shadow: 0 0 0 1px var(--barro);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .root-connector {
+      width: 2px;
+      flex: 1;
+      background: linear-gradient(to bottom, var(--barro), rgba(196,120,60,0.15));
+      border-radius: 2px;
+      min-height: 16px;
+    }
+
+    .root-item:last-child .root-connector { display: none; }
+
+    .root-content {
+      padding-bottom: 1.4rem;
+    }
+
+    .root-item:last-child .root-content { padding-bottom: 0; }
+
+    .root-content h4 {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--escuro);
+      margin-bottom: 0.15rem;
+    }
+
+    .root-content .root-role {
+      font-size: 0.82rem;
+      color: var(--medio);
+      font-weight: 300;
+      display: block;
+    }
+
+    .root-content .root-years {
+      font-size: 0.75rem;
+      color: var(--barro);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      display: block;
+      margin-top: 0.1rem;
+    }
+
+    @media (max-width: 768px) {
+      .story-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
 
     /* COMMUNITY */
     .community { background: var(--creme); }
@@ -447,6 +528,19 @@
       border-color: white;
     }
 
+    .contact-linkedin {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .contact-linkedin:hover { color: white; }
+
     /* FOOTER */
     footer {
       padding: 2rem 4rem;
@@ -460,6 +554,23 @@
 
     footer a { color: var(--medio); text-decoration: none; }
     footer a:hover { color: var(--terra); }
+
+    .footer-linkedin {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--medio);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-linkedin:hover { color: var(--terra); }
+
+    .footer-linkedin svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
 
     /* MOBILE */
     @media (max-width: 900px) {
@@ -604,7 +715,7 @@
       </div>
       <div class="symptom-card">
         <div class="symptom-leaf"></div>
-        <span class="symptom-text" data-i18n="sym.s10">My people are great individually but don't gel as a team.</span>
+        <span class="symptom-text" data-i18n="sym.s10">Everyone is talented but the team doesn't click.</span>
         <span class="symptom-skill" data-i18n="sym.s10.skill">Team & Culture</span>
       </div>
     </div>
@@ -625,40 +736,89 @@
     <div class="what-grid">
       <div class="what-card">
         <div class="what-card-accent accent-terra"></div>
-        <h3 data-i18n="what.c1.title">Coaching & Strategy</h3>
+        <h3 data-i18n="what.c1.title">Evolution Coaching</h3>
         <p data-i18n="what.c1.desc">For when the direction isn't clear. I work with leaders and founders to find clarity, prioritize what matters, and decide what to stop doing.</p>
       </div>
       <div class="what-card">
         <div class="what-card-accent accent-verde"></div>
-        <h3 data-i18n="what.c2.title">Team & Culture</h3>
-        <p data-i18n="what.c2.desc">For when the team doesn't work like a team. Communication, shared responsibility, leadership distribution, and trust — without the jargon.</p>
+        <h3 data-i18n="what.c2.title">Flow & Decisions</h3>
+        <p data-i18n="what.c2.desc">For when work piles up, deadlines slip, and no one's sure what's blocking what. I help teams design simpler ways to plan, track, and ship. We look at the whole system, not just the symptoms.</p>
       </div>
       <div class="what-card">
         <div class="what-card-accent accent-barro"></div>
-        <h3 data-i18n="what.c3.title">Flow & Decisions</h3>
-        <p data-i18n="what.c3.desc">For when things get stuck. Simple systems for delegation, prioritization, and getting work out the door — built around the people doing it.</p>
+        <h3 data-i18n="what.c3.title">Team & Culture</h3>
+        <p data-i18n="what.c3.desc">For when people work side by side but not as a team. We look at how decisions get made, who owns what, and where things fall through the cracks.</p>
       </div>
       <div class="what-card">
         <div class="what-card-accent accent-folha"></div>
-        <h3 data-i18n="what.c4.title">AI with Responsibility</h3>
-        <p data-i18n="what.c4.desc">AI works best when people understand what it can and can't do. I help teams adopt it with intention — asking the right questions before picking the tools.</p>
+        <h3 data-i18n="what.c4.title">Thinking Partner & Facilitation</h3>
+        <p data-i18n="what.c4.desc">For when you need someone to push back, not just agree. I ask the uncomfortable questions, challenge your assumptions, and help you think through decisions before you commit.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-card-accent accent-folha"></div>
+        <h3 data-i18n="what.c5.title">AI with Responsibility</h3>
+        <p data-i18n="what.c5.desc">For when everyone's talking about AI but no one knows where to start. I help teams figure out what it can do for them, how to use it without losing trust, and what to ask before picking any tool.</p>
       </div>
       <div class="what-card">
         <div class="what-card-accent accent-escuro"></div>
-        <h3 data-i18n="what.c5.title">Facilitation & Training</h3>
-        <p data-i18n="what.c5.desc">Workshops, talks, and training that make people think. Available for events, organizations, and ongoing programs. In Portuguese and English.</p>
+        <h3 data-i18n="what.c6.title">Talks & Training</h3>
+        <p data-i18n="what.c6.desc">Workshops, talks, and training that make people think. Available for events, organizations, and ongoing programs. In Portuguese and English.</p>
       </div>
     </div>
   </section>
 
   <!-- STORY -->
   <section class="story" id="story">
-    <div class="story-solo">
-      <p class="section-tag" data-i18n="story.tag">Story</p>
-      <h2 class="section-title" data-i18n="story.title">Brazilian roots,<br>European branches.</h2>
-      <p data-i18n="story.p1">I grew up in Brazil and built my career across fintech, healthcare, and tech — always at the intersection of people, strategy, and organizational change.</p>
-      <p data-i18n="story.p2">Over 12 years I've worked with teams in hypergrowth, post-merger integration, and large-scale organizational change. I've seen what happens when organizations force growth. <strong>I help them let it happen instead.</strong></p>
-      <p data-i18n="story.p3">Today I'm based in Hamburg, working across Europe and Latin America — and still learning something new every cycle.</p>
+    <div class="story-inner">
+      <div class="story-text">
+        <p class="section-tag" data-i18n="story.tag">Story</p>
+        <h2 class="section-title" data-i18n="story.title">Brazilian roots,<br>European branches.</h2>
+        <p data-i18n="story.p1">I grew up in Brazil and spent 12 years building a career across fintech, healthcare, and tech. People, strategy, and how organizations actually work have always been my thing.</p>
+        <p data-i18n="story.p2">I've been through hypergrowth, post-merger chaos, and large-scale change. I've seen what happens when organizations try to force growth. <strong>I help them let it happen instead.</strong></p>
+        <p data-i18n="story.p3">Today I'm based in Hamburg, working across Europe and Latin America. Still learning something new every cycle.</p>
+      </div>
+      <div class="story-roots">
+        <div class="root-item">
+          <div class="root-line"><div class="root-dot"></div><div class="root-connector"></div></div>
+          <div class="root-content">
+            <h4>MOIA · Volkswagen Group</h4>
+            <span class="root-role" data-i18n="story.r1.role">Agile Coach &amp; Strategic Product Ops</span>
+            <span class="root-years" data-i18n="story.r1.years">2022 – present · Hamburg, Germany</span>
+          </div>
+        </div>
+        <div class="root-item">
+          <div class="root-line"><div class="root-dot"></div><div class="root-connector"></div></div>
+          <div class="root-content">
+            <h4>Fired Up GmbH</h4>
+            <span class="root-role" data-i18n="story.r5.role">Trainer · Agile &amp; Organizational Evolution</span>
+            <span class="root-years" data-i18n="story.r5.years">2022 – present · Germany</span>
+          </div>
+        </div>
+        <div class="root-item">
+          <div class="root-line"><div class="root-dot"></div><div class="root-connector"></div></div>
+          <div class="root-content">
+            <h4>Nubank</h4>
+            <span class="root-role" data-i18n="story.r2.role">Agile Chapter Lead</span>
+            <span class="root-years" data-i18n="story.r2.years">2021 – 2022 · São Paulo, Brazil</span>
+          </div>
+        </div>
+        <div class="root-item">
+          <div class="root-line"><div class="root-dot"></div><div class="root-connector"></div></div>
+          <div class="root-content">
+            <h4>Easynvest · Nubank</h4>
+            <span class="root-role" data-i18n="story.r3.role">Agile Coach</span>
+            <span class="root-years" data-i18n="story.r3.years">2018 – 2021 · São Paulo, Brazil</span>
+          </div>
+        </div>
+        <div class="root-item">
+          <div class="root-line"><div class="root-dot"></div><div class="root-connector"></div></div>
+          <div class="root-content">
+            <h4>Qualicorp</h4>
+            <span class="root-role" data-i18n="story.r4.role">Scrum Master &amp; Product Owner</span>
+            <span class="root-years" data-i18n="story.r4.years">2013 – 2018 · São Paulo, Brazil</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -677,7 +837,7 @@
         <p data-i18n="comm.c2.desc">Regular speaker on evolution, team culture, agility, and AI ethics. Available in Portuguese and English.</p>
       </div>
       <div class="community-card">
-        <h3 data-i18n="comm.c3.title">Teaching</h3>
+        <h3 data-i18n="comm.c3.title">Training</h3>
         <p data-i18n="comm.c3.desc">Lecturer at Fired Up GmbH on agile practices and organizational evolution. Connecting theory to what actually happens in the room.</p>
       </div>
     </div>
@@ -690,6 +850,14 @@
       <h2 class="section-title" data-i18n="contact.title">Let's grow<br>something together.</h2>
       <p data-i18n="contact.sub">Whether you're looking for a partner, a speaker, a facilitator, or just want to think out loud — I'd love to hear from you.</p>
       <a href="mailto:contato@cindymorais.com" class="contact-link">contato@cindymorais.com</a>
+      <div style="margin-top: 1.8rem;">
+        <a href="https://www.linkedin.com/in/cindymorais/" target="_blank" rel="noopener" class="contact-linkedin">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:18px;height:18px;fill:currentColor;flex-shrink:0;">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          <span data-i18n="contact.linkedin">Find me on LinkedIn</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -697,6 +865,7 @@
   <footer>
     <span>© 2026 Cindy Morais</span>
     <span data-i18n="footer.loc">Hamburg · São Paulo · everywhere in between</span>
+    <span style="font-size:0.72rem; color: var(--medio); opacity: 0.6;" data-i18n="footer.made"></span>
   </footer>
 
   <script>
@@ -710,12 +879,12 @@
 
         "hero.tag":  "Evolution · Coaching · Community",
         "hero.h1":   "Some seasons are<br>for growing. Some<br>are for <em>rooting.</em>",
-        "hero.sub":  "I work with people and organizations ready to grow — with intention, with care, and with curiosity about what comes next.",
+        "hero.sub":  "I work with people and organizations ready to grow. With intention, with care, and with curiosity about what comes next.",
         "hero.cta1": "Which one are you in?",
         "hero.cta2": "Get in touch",
 
         "sym.tag":       "Does this sound familiar?",
-        "sym.lead":      "These are the conversations I find myself having most. If one of them sounds like yours, that's a good place to start.",
+        "sym.lead":      "These are the conversations I find myself having most. If one of them sounds like yours, that is a good place to start.",
         "sym.s1":        "I don't know where to start.",
         "sym.s1.skill":  "Coaching & Strategy",
         "sym.s2":        "My team doesn't really talk to each other.",
@@ -724,7 +893,7 @@
         "sym.s3.skill":  "Flow & Decisions",
         "sym.s4":        "Everyone agrees, but nothing ever moves.",
         "sym.s4.skill":  "Flow & Decisions",
-        "sym.s5":        "I can't delegate. I end up doing everything myself.",
+        "sym.s5":        "I can't delegate. I always end up doing everything myself.",
         "sym.s5.skill":  "Coaching & Strategy",
         "sym.s6":        "I have no idea what my team is actually doing.",
         "sym.s6.skill":  "Team & Culture",
@@ -732,47 +901,61 @@
         "sym.s7.skill":  "Coaching & Strategy",
         "sym.s8":        "I want to adopt AI but don't know how to do it responsibly.",
         "sym.s8.skill":  "AI with Responsibility",
-        "sym.s9":        "My product doesn't ship — or it shipped and doesn't work.",
+        "sym.s9":        "My product never ships. Or it shipped and doesn't work.",
         "sym.s9.skill":  "Flow & Decisions",
-        "sym.s10":       "My people are great individually but don't gel as a team.",
+        "sym.s10":       "Everyone is talented but the team doesn't click.",
         "sym.s10.skill": "Team & Culture",
-        "sym.cta.text":  "If any of these is you — or feels close — let's talk.",
+        "sym.cta.text":  "If any of these is you, or feels close, let's talk.",
         "sym.cta.btn":   "Get in touch",
 
         "what.tag":      "What I do",
         "what.title":    "Many roots,<br>one direction.",
         "what.sub":      "Take what fits your moment. Each of these can be a starting point or a whole journey.",
-        "what.c1.title": "Coaching & Strategy",
+        "what.c1.title": "Evolution Coaching",
         "what.c1.desc":  "For when the direction isn't clear. I work with leaders and founders to find clarity, prioritize what matters, and decide what to stop doing.",
-        "what.c2.title": "Team & Culture",
-        "what.c2.desc":  "For when the team doesn't work like a team. Communication, shared responsibility, leadership distribution, and trust — without the jargon.",
-        "what.c3.title": "Flow & Decisions",
-        "what.c3.desc":  "For when things get stuck. Simple systems for delegation, prioritization, and getting work out the door — built around the people doing it.",
-        "what.c4.title": "AI with Responsibility",
-        "what.c4.desc":  "AI works best when people understand what it can and can't do. I help teams adopt it with intention — asking the right questions before picking the tools.",
-        "what.c5.title": "Facilitation & Training",
-        "what.c5.desc":  "Workshops, talks, and training that make people think. Available for events, organizations, and ongoing programs. In Portuguese and English.",
+        "what.c2.title": "Flow & Decisions",
+        "what.c2.desc":  "For when work piles up, deadlines slip, and no one's sure what's blocking what. I help teams design simpler ways to plan, track, and ship. We look at the whole system, not just the symptoms.",
+        "what.c3.title": "Team & Culture",
+        "what.c3.desc":  "For when people work side by side but not as a team. We look at how decisions get made, who owns what, and where things fall through the cracks.",
+        "what.c4.title": "Thinking Partner & Facilitation",
+        "what.c4.desc":  "For when you need someone to push back, not just agree. I ask the uncomfortable questions, challenge your assumptions, and help you think through decisions before you commit.",
+        "what.c5.title": "AI with Responsibility",
+        "what.c5.desc":  "For when everyone's talking about AI but no one knows where to start. I help teams figure out what it can do for them, how to use it without losing trust, and what to ask before picking any tool.",
+        "what.c6.title": "Talks & Training",
+        "what.c6.desc":  "Workshops, talks, and training that make people think. Available for events, organizations, and ongoing programs. In Portuguese and English.",
 
         "story.tag":   "Story",
         "story.title": "Brazilian roots,<br>European branches.",
-        "story.p1":    "I grew up in Brazil and built my career across fintech, healthcare, and tech — always at the intersection of people, strategy, and organizational change.",
-        "story.p2":    "Over 12 years I've worked with teams in hypergrowth, post-merger integration, and large-scale organizational change. I've seen what happens when organizations force growth. <strong>I help them let it happen instead.</strong>",
-        "story.p3":    "Today I'm based in Hamburg, working across Europe and Latin America — and still learning something new every cycle.",
+        "story.p1":    "I grew up in Brazil and spent 12 years building a career across fintech, healthcare, and tech. People, strategy, and how organizations actually work have always been my thing.",
+        "story.p2":    "I've been through hypergrowth, post-merger chaos, and large-scale change. I've seen what happens when organizations try to force growth. <strong>I help them let it happen instead.</strong>",
+        "story.p3":    "Today I'm based in Hamburg, working across Europe and Latin America. Still learning something new every cycle.",
+        "story.r1.role":  "Agile Coach &amp; Strategic Product Ops",
+        "story.r1.years": "2022 – present · Hamburg, Germany",
+        "story.r2.role":  "Agile Chapter Lead",
+        "story.r2.years": "2021 – 2022 · São Paulo, Brazil",
+        "story.r3.role":  "Agile Coach",
+        "story.r3.years": "2018 – 2021 · São Paulo, Brazil",
+        "story.r4.role":  "Scrum Master &amp; Product Owner",
+        "story.r4.years": "2013 – 2018 · São Paulo, Brazil",
+        "story.r5.role":  "Trainer · Agile &amp; Organizational Evolution",
+        "story.r5.years": "2022 – present · Germany",
 
         "comm.tag":      "Community",
         "comm.title":    "Giving back to<br>the ecosystem.",
-        "comm.sub":      "Communities are where real learning happens. I've built and contributed to several — because sharing knowledge is part of how things grow.",
-        "comm.c1":       "Co-founder & lead coordinator (2018–2022). Monthly events with 3,000+ community members. Full production: speakers, venue, tech, branding.",
+        "comm.sub":      "Communities are where real learning happens. I've built and contributed to several, because sharing knowledge is part of how things grow.",
+        "comm.c1":       "Organiser & coordinator (2018–2022). Monthly events with 3,000+ community members. Full production: speakers, venue, tech, branding.",
         "comm.c2.title": "Talks & Panels",
         "comm.c2.desc":  "Regular speaker on evolution, team culture, agility, and AI ethics. Available in Portuguese and English.",
-        "comm.c3.title": "Teaching",
-        "comm.c3.desc":  "Lecturer at Fired Up GmbH on agile practices and organizational evolution. Connecting theory to what actually happens in the room.",
+        "comm.c3.title": "Training",
+        "comm.c3.desc":  "Lecturer at Fired Up GmbH on agile practices and organizational evolution. Connecting theory to what actually happens in the room. I also have an Agile Coach course at Descola in São Paulo.",
 
-        "contact.tag":   "Contact",
-        "contact.title": "Let's grow<br>something together.",
-        "contact.sub":   "Whether you're looking for a partner, a speaker, a facilitator, or just want to think out loud — I'd love to hear from you.",
+        "contact.tag":     "Contact",
+        "contact.title":   "Let's grow<br>something together.",
+        "contact.sub":     "Whether you're looking for a partner, a speaker, a facilitator, or just want to think out loud. I'd love to hear from you.",
+        "contact.linkedin": "Find me on LinkedIn",
 
-        "footer.loc": "Hamburg · São Paulo · everywhere in between"
+        "footer.loc":  "Hamburg · São Paulo · everywhere in between",
+        "footer.made": "vibecoded with Claude Code, reviewed by me"
       },
 
       pt: {
@@ -784,7 +967,7 @@
 
         "hero.tag":  "Evolução · Coaching · Comunidade",
         "hero.h1":   "Tem estação pra<br>crescer. Tem estação<br>pra <em>criar raízes.</em>",
-        "hero.sub":  "Trabalho com pessoas e organizações prontas para crescer — com intenção, com cuidado e com curiosidade sobre o que vem a seguir.",
+        "hero.sub":  "Trabalho com pessoas e organizações prontas para crescer. Com intenção, com cuidado e com curiosidade sobre o que vem a seguir.",
         "hero.cta1": "Qual é a sua agora?",
         "hero.cta2": "Fala comigo",
 
@@ -798,7 +981,7 @@
         "sym.s3.skill":  "Flow & Decisões",
         "sym.s4":        "Todo mundo concorda, mas nada avança.",
         "sym.s4.skill":  "Flow & Decisões",
-        "sym.s5":        "Não consigo delegar — acabo fazendo tudo eu mesmo.",
+        "sym.s5":        "Não consigo delegar. Acabo sempre fazendo tudo eu mesmo.",
         "sym.s5.skill":  "Coaching & Estratégia",
         "sym.s6":        "Não sei de verdade o que meu time está fazendo.",
         "sym.s6.skill":  "Time & Cultura",
@@ -806,47 +989,61 @@
         "sym.s7.skill":  "Coaching & Estratégia",
         "sym.s8":        "Quero adotar IA mas não sei como fazer isso com responsabilidade.",
         "sym.s8.skill":  "IA com Responsabilidade",
-        "sym.s9":        "Meu produto não sai do papel — ou saiu e não funciona.",
+        "sym.s9":        "Meu produto nunca sai do papel. Ou saiu e não funciona.",
         "sym.s9.skill":  "Flow & Decisões",
-        "sym.s10":       "Meu time é bom individualmente mas não funciona junto.",
+        "sym.s10":       "Todo mundo é talentoso mas o time não engaja.",
         "sym.s10.skill": "Time & Cultura",
-        "sym.cta.text":  "Se alguma dessas é você — ou chega perto — me manda uma mensagem.",
+        "sym.cta.text":  "Se alguma dessas é você, ou chega perto, me manda uma mensagem.",
         "sym.cta.btn":   "Fala comigo",
 
         "what.tag":      "O que eu faço",
         "what.title":    "Muitas raízes,<br>uma direção.",
         "what.sub":      "Colhe o que faz sentido pro seu momento. Cada um desses pode ser um ponto de partida ou uma jornada inteira.",
-        "what.c1.title": "Coaching & Estratégia",
+        "what.c1.title": "Coaching de Evolução",
         "what.c1.desc":  "Para quando a direção não está clara. Trabalho com líderes e fundadores para encontrar clareza, priorizar o que importa e decidir o que parar de fazer.",
-        "what.c2.title": "Time & Cultura",
-        "what.c2.desc":  "Para quando o time não funciona como time. Comunicação, responsabilidade compartilhada, liderança distribuída e confiança — sem jargão.",
-        "what.c3.title": "Flow & Decisões",
-        "what.c3.desc":  "Para quando as coisas travam. Sistemas simples de delegação, priorização e entrega — construídos em torno das pessoas que fazem o trabalho.",
-        "what.c4.title": "IA com Responsabilidade",
-        "what.c4.desc":  "IA funciona melhor quando as pessoas entendem o que ela pode e o que ela não pode fazer. Ajudo times a adotá-la com intenção — fazendo as perguntas certas antes de escolher as ferramentas.",
-        "what.c5.title": "Facilitação & Formação",
-        "what.c5.desc":  "Workshops, palestras e treinamentos que fazem as pessoas pensar. Disponível para eventos, organizações e programas contínuos. Em português e inglês.",
+        "what.c2.title": "Flow & Decisões",
+        "what.c2.desc":  "Para quando o trabalho acumula, os prazos escorregam e ninguém sabe o que está travando o quê. Ajudo times a criar formas mais simples de planejar, acompanhar e entregar. Olhamos o sistema inteiro, não só os sintomas.",
+        "what.c3.title": "Time & Cultura",
+        "what.c3.desc":  "Para quando as pessoas trabalham lado a lado mas não funcionam como um time. Olhamos como as decisões são tomadas, quem é dono do quê, e onde as coisas caem no vazio.",
+        "what.c4.title": "Thinking Partner & Facilitação",
+        "what.c4.desc":  "Para quando você precisa de alguém que discorde, não só concorde. Faço as perguntas difíceis, desafio suas premissas e ajudo a pensar nas decisões antes de tomá-las.",
+        "what.c5.title": "IA com Responsabilidade",
+        "what.c5.desc":  "Para quando todo mundo fala sobre IA mas ninguém sabe por onde começar. Ajudo times a entender o que ela pode fazer por eles, como usá-la sem perder confiança, e o que perguntar antes de escolher qualquer ferramenta.",
+        "what.c6.title": "Palestras & Treinamentos",
+        "what.c6.desc":  "Workshops, palestras e treinamentos que fazem as pessoas pensar. Disponível para eventos, organizações e programas contínuos. Em português e inglês.",
 
         "story.tag":   "História",
         "story.title": "Raízes brasileiras,<br>galhos europeus.",
-        "story.p1":    "Cresci no Brasil e construí minha carreira entre fintech, saúde e tecnologia — sempre na interseção entre pessoas, estratégia e mudança organizacional.",
-        "story.p2":    "Em 12 anos trabalhei com times em hipercrescimento, integrações pós-fusão e mudanças organizacionais de grande escala. Vi o que acontece quando organizações forçam o crescimento. <strong>Eu as ajudo a deixar ele acontecer.</strong>",
-        "story.p3":    "Hoje estou baseada em Hamburg, trabalhando entre a Europa e a América Latina — e ainda aprendendo algo novo a cada ciclo.",
+        "story.p1":    "Cresci no Brasil e passei 12 anos construindo uma carreira entre fintech, saúde e tecnologia. Pessoas, estratégia e como as organizações funcionam de verdade sempre foram meu negócio.",
+        "story.p2":    "Passei por hipercrescimento, caos pós-fusão e mudanças organizacionais de grande escala. Vi o que acontece quando organizações tentam forçar o crescimento. <strong>Eu as ajudo a deixar ele acontecer.</strong>",
+        "story.p3":    "Hoje estou baseada em Hamburg, trabalhando entre a Europa e a América Latina. Ainda aprendendo algo novo a cada ciclo.",
+        "story.r1.role":  "Agile Coach &amp; Strategic Product Ops",
+        "story.r1.years": "2022 – present · Hamburg, Alemanha",
+        "story.r2.role":  "Agile Chapter Lead",
+        "story.r2.years": "2021 – 2022 · São Paulo, Brasil",
+        "story.r3.role":  "Agile Coach",
+        "story.r3.years": "2018 – 2021 · São Paulo, Brasil",
+        "story.r4.role":  "Scrum Master &amp; Product Owner",
+        "story.r4.years": "2013 – 2018 · São Paulo, Brasil",
+        "story.r5.role":  "Trainer · Evolução Ágil &amp; Organizacional",
+        "story.r5.years": "2022 – present · Alemanha",
 
         "comm.tag":      "Comunidade",
         "comm.title":    "Devolvendo ao<br>ecossistema.",
-        "comm.sub":      "Comunidades são onde o aprendizado real acontece. Construí e contribuí com várias — porque compartilhar conhecimento faz parte de como as coisas crescem.",
-        "comm.c1":       "Co-fundadora e coordenadora (2018–2022). Eventos mensais com mais de 3.000 pessoas. Produção completa: palestrantes, local, tecnologia, branding.",
+        "comm.sub":      "Comunidades são onde o aprendizado real acontece. Construí e contribuí com várias, porque compartilhar conhecimento faz parte de como as coisas crescem.",
+        "comm.c1":       "Organiser & coordinator (2018–2022). Eventos mensais com mais de 3.000 pessoas. Produção completa: palestrantes, local, tecnologia, branding.",
         "comm.c2.title": "Palestras & Painéis",
         "comm.c2.desc":  "Palestrante frequente sobre evolução, cultura de time, agilidade e ética em IA. Disponível em português e inglês.",
-        "comm.c3.title": "Docência",
+        "comm.c3.title": "Treinamentos",
         "comm.c3.desc":  "Professora na Fired Up GmbH sobre práticas ágeis e evolução organizacional. Conectando teoria ao que acontece de verdade na sala. Tenho também um curso de Agile Coach na Descola, em São Paulo — procure saber.",
 
-        "contact.tag":   "Contato",
-        "contact.title": "Vamos construir<br>algo juntos.",
-        "contact.sub":   "Se você busca uma parceira, uma palestrante, uma facilitadora, ou só quer pensar em voz alta — adoraria te ouvir.",
+        "contact.tag":     "Contato",
+        "contact.title":   "Vamos construir<br>algo juntos.",
+        "contact.sub":     "Se você busca uma parceira, uma palestrante, uma facilitadora, ou só quer pensar em voz alta. Adoraria te ouvir.",
+        "contact.linkedin": "Me encontra no LinkedIn",
 
-        "footer.loc": "Hamburg · São Paulo · em todo lugar entre os dois"
+        "footer.loc":  "Hamburg · São Paulo · em todo lugar entre os dois",
+        "footer.made": "vibecoded com Claude Code, revisado por mim"
       }
     }
 
